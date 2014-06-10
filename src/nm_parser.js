@@ -1,11 +1,9 @@
-var s    = require('string');
+var s = require('string');
 
 module.exports = function(input) {
   var inp = s(input).lines();
-  var is_wifi = false;
   var devices = [];
   var i=-1, j=-1;
-  var in_prop = false;
   var curr_prop;
 
   for (i=0; i<inp.length; i++) {
