@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/Elzair/node-wifi-tools",
   "dependencies": {
-    "string": "^1.8.1",
-    "cb2yield": "~0.1.1"
+    "string": "^1.8.1"
   }
 }
