@@ -1,0 +1,25 @@
+{
+  "name": "node-wifi-tools",
+  "version": "0.0.1",
+  "description": "Utility for Node.js to work with 802.11 interfaces",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Elzair/node-wifi-tools"
+  },
+  "keywords": [
+    "wifi"
+  ],
+  "author": "Philip Woods",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Elzair/node-wifi-tools/issues"
+  },
+  "homepage": "https://github.com/Elzair/node-wifi-tools",
+  "dependencies": {
+    "string": "^1.8.1"
+  }
+}
