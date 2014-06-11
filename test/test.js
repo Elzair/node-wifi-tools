@@ -6,22 +6,22 @@ describe('node-wifi-tools', function() {
     ;
 
   describe('get_info()', function() {
-    it('should have an out object with subproperties depending on OS', function(done) {
-      nwtool.get_info(function(err, out) {
-        assert.equal(typeof out, 'object');
+    it('should have an info object with subproperties depending on OS', function(done) {
+      nwtool.get_info(function(err, info) {
+        assert.equal(typeof info, 'object');
 
         if (os.platform() === 'linux') {
           assert.equal(err, null);
-          assert.equal(out.hasOwnProperty('network_tool'), true);
+          assert.equal(info.hasOwnProperty('network_tool'), true);
         }
         else if (os.platform() === 'darwin') {
           assert.equal(err, null);
-          assert.equal(out.hasOwnProperty('airport'), true);
-          assert.equal(out.hasOwnProperty('netstat'), true);
+          assert.equal(info.hasOwnProperty('airport'), true);
+          assert.equal(info.hasOwnProperty('netstat'), true);
         }
         else {
           assert.equal(err, "Unsupported platform: " + os.platform());
-          assert.equal(out, null);
+          assert.equal(info, null);
         }
 
         done();

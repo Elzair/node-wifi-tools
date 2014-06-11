@@ -12,6 +12,14 @@ Install **node-wifi-tools** into your project.
 
     npm install node-wifi-tools --save
 
+You can now use it in your project.
+
+    var nwtool = require('node-wifi-tools');
+    
+    nwtool.get_info(function (err, info) {
+      console.log(JSON.stringify(info, null, 2));
+    }
+
 ### Standalone
 
 Install **node-wifi-tools** globally on your system
