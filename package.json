@@ -1,10 +1,11 @@
 {
   "name": "node-wifi-tools",
-  "version": "0.0.1",
+  "version": "0.0.9",
   "description": "Utility for Node.js to work with 802.11 interfaces",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./bin/node-wifi-tools"
   },
   "repository": {
     "type": "git",

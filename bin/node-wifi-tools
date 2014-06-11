@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+var node_wifi_tools = require(__dirname + '/../')
+  ;
+
+node_wifi_tools.get_info(function(err, out) {
+  if (err) {
+    console.error(JSON.stringify(err, null, 2));
+  }
+
+  console.log(JSON.stringify(out, null, 2));
+});
