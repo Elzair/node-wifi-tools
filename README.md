@@ -19,3 +19,9 @@ Install **node-wifi-tools** globally on your system
     npm install node-wifi-tools -g
 
 The command **node-wifi-tools** has been added to your global *node_modules/* directory and a link to *bin/node-wifi-tools* has been added to your **$PATH**. 
+
+
+## Supported Systems
+
+* **Mac OSX**
+* **Linux** (with [nm-tool](http://linux.die.net/man/1/nm-tool))
