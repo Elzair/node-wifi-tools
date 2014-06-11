@@ -14,11 +14,13 @@ Install **node-wifi-tools** into your project.
 
 You can now use it in your project.
 
+    ````javascript
     var nwtool = require('node-wifi-tools');
     
     nwtool.get_info(function (err, info) {
       console.log(JSON.stringify(info, null, 2));
     }
+    ````
 
 ### Standalone
 
