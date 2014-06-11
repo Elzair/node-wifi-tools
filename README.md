@@ -25,3 +25,4 @@ The command **node-wifi-tools** has been added to your global *node_modules/* di
 
 * **Mac OSX**
 * **Linux** (with [nm-tool](http://linux.die.net/man/1/nm-tool))
+* **Windows 7+** (TODO)

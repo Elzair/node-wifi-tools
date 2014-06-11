@@ -20,7 +20,7 @@ exports.get_info = function(cb) {
       if (error || stderr || stderr !== '') {
         cb({error: error, stderr: stderr}, null);
       }
-      cb(null, nm_parse(stdout));
+      cb(null, {network_tool: nm_parse(stdout)});
     });
   }
   else if (os.platform() === 'darwin') {
@@ -35,7 +35,7 @@ exports.get_info = function(cb) {
           cb({error: nerror, stderr: nstderr}, null);
         }
         var ns_out = ns_parse(nstdout);
-        cb(null, {access_point: ap_out, netstat: ns_out});
+        cb(null, {airport: ap_out, netstat: ns_out});
       });
     });
   }
