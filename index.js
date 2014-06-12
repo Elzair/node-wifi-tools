@@ -1,8 +1,8 @@
-var ap_parse = require(__dirname + '/src/airport_parser')
+var ap_parse = require(__dirname + '/lib/airport_parser')
   , exec     = require('child_process').exec
   , os       = require('os')
-  , nm_parse = require(__dirname + '/src/nm_parser')
-  , ns_parse = require(__dirname + '/src/ns_parser')
+  , nm_parse = require(__dirname + '/lib/nm_parser')
+  , ns_parse = require(__dirname + '/lib/ns_parser')
   ;
 
 function isFunction(func) {

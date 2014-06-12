@@ -4,7 +4,7 @@ Utility for [Node.js](http://nodejs.org) to work with 802.11 interfaces
 
 ## Installation
 
-You can use **node-wifi-tools** as either a standalone "executable" or as a [npm](https://www.npmjs.org/) module.
+You can use **node-wifi-tools** as either a standalone "executable" or as an [npm](https://www.npmjs.org/) module.
 
 ### Module
 
@@ -29,6 +29,11 @@ Install **node-wifi-tools** globally on your system
 
 The command **node-wifi-tools** has been added to your global *node_modules/* directory and a link to *bin/node-wifi-tools* has been added to your **$PATH**. 
 
+## Testing
+
+You can run the included test suite with the following command.
+
+    npm test
 
 ## Supported Systems
 
