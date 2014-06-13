@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "pretest": "npm install",
-    "test": "./node_modules/mocha/bin/mocha --harmony test/test.js",
+    "test": "./node_modules/mocha/bin/mocha --harmony test/*.js",
     "prestart": "npm install",
     "start": "./bin/node-wifi-tools"
   },
