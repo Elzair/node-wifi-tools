@@ -1,6 +1,6 @@
 var ap_parse = require(__dirname + '/lib/airport_parser')
-  , nm_parse = require(__dirname + '/lib/nm_parser')
-  , ns_parse = require(__dirname + '/lib/ns_parser')
+  , nm_parse = require(__dirname + '/lib/netman_parser')
+  , ns_parse = require(__dirname + '/lib/netstat_parser')
   , os       = require('os')
   , spawn    = require('co-child-process')
   ;

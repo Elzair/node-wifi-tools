@@ -1,6 +1,6 @@
 var assert   = require('assert')
   , co_mocha = require('co-mocha')
-  , nm_parse = require(__dirname+'/../lib/nm_parser')
+  , nm_parse = require(__dirname+'/../lib/netman_parser')
   ;
 
 describe('nm_parser', function() {
