@@ -1,9 +1,9 @@
-var assert   = require('assert')
-  , co_mocha = require('co-mocha')
-  , nm_parse = require(__dirname+'/../lib/netman_parser')
+var assert    = require('assert')
+  , co_mocha  = require('co-mocha')
+  , nmt_parse = require(__dirname+'/../lib/nmt_parser')
   ;
 
-describe('nm_parser', function() {
+describe('nmt_parser', function() {
   var info;
 
   beforeEach(function *() {
@@ -61,7 +61,7 @@ describe('nm_parser', function() {
       '',
       ''
     ].join('\n');
-    info = nm_parse(test_output);
+    info = nmt_parse(test_output);
   });
 
   describe('Wireless Device', function () {
@@ -105,5 +105,4 @@ describe('nm_parser', function() {
       assert.equal(info[0].connected_ap, 'rscpublic01');
     });
   });
-
 });
