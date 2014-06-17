@@ -1,6 +1,7 @@
 var ap_parse  = require(__dirname + '/lib/airport_parser')
   , nmt_parse = require(__dirname + '/lib/nmt_parser')
   , nsh_ip_parse = require(__dirname + '/lib/netsh_ip_parser')
+  , nsh_wi_parse = require(__dirname + '/lib/netsh_wlan_interfaces_parser')
   , nst_parse = require(__dirname + '/lib/netstat_parser')
   , os        = require('os')
   , spawn     = require('co-child-process')
@@ -18,7 +19,8 @@ exports.get_info = function*(cb) {
   }
   else if (os.platform() === 'windows') {
     var nsh_ip_out = yield spawn('netsh', ['interface', 'ip', 'show', 'address']);
-    return {ip_show_address: nsh_ip_out};
+    var nsh_wi_out = yield spawn('netsh', ['wlan', 'show', 'interfaces']);
+    return {ip_show_address: nsh_ip_parse(nsh_ip_out), wlan_show_interfaces: nsh_wi_parse(nsh_wi_out)};
   }
   else {
     throw "Unsupported platform: " + os.platform();

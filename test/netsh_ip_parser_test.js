@@ -28,9 +28,9 @@ describe('netsh_ip_parser', function() {
      , ''
      , 'Configuration for interface "Wireless Network Connection"'
      , '    DHCP enabled:                         Yes'
-     , '    IP Address:                           192.168.121.186'
-     , '    Subnet Prefix:                        192.168.121.0/24 (mask 255.255.255.0)'
-     , '    Default Gateway:                      192.168.121.1'
+     , '    IP Address:                           192.168.131.186'
+     , '    Subnet Prefix:                        192.168.131.0/24 (mask 255.255.255.0)'
+     , '    Default Gateway:                      192.168.131.1'
      , '    Gateway Metric:                       0'
      , '    InterfaceMetric:                      20'
      , ''
@@ -58,15 +58,15 @@ describe('netsh_ip_parser', function() {
     });
 
     it('should contain correct IP address', function *() {
-      assert.equal(info.wireless_network_connection.ip_address, '192.168.121.186');
+      assert.equal(info.wireless_network_connection.ip_address, '192.168.131.186');
     });
 
     it('should contain correct subnet prefix', function *() {
-      assert.equal(info.wireless_network_connection.subnet_prefix, '192.168.121.0/24 (mask 255.255.255.0)');
+      assert.equal(info.wireless_network_connection.subnet_prefix, '192.168.131.0/24 (mask 255.255.255.0)');
     });
 
     it('should contain correct default gateway', function *() {
-      assert.equal(info.wireless_network_connection.default_gateway, '192.168.121.1');
+      assert.equal(info.wireless_network_connection.default_gateway, '192.168.131.1');
     });
 
     it('should contain correct gateway metric', function *() {

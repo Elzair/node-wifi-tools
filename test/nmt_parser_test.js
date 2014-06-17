@@ -14,12 +14,12 @@ describe('nmt_parser', function() {
       '',
       'State: connected (global)',
       '',
-      '- Device: wlan0  [rscpublic01] -------------------------------------------------',
+      '- Device: wlan0  [test01] -------------------------------------------------',
       '  Type:              802.11 WiFi',
       '  Driver:            iwlwifi',
       '  State:             connected',
       '  Default:           yes',
-      '  HW Address:        3C:A9:F4:08:91:8C',
+      '  HW Address:        91:5B:CE:AF:F9:E6',
       '',
       '  Capabilities:',
       '    Speed:           243 Mb/s',
@@ -30,20 +30,20 @@ describe('nmt_parser', function() {
       '    WPA2 Encryption: yes',
       '',
       '  Wireless Access Points (* = current AP)',
-      '    TysonsDesk:      Infra, 2C:B0:5D:9F:1A:92, Freq 2437 MHz, Rate 54 Mb/s, Strength 100 WPA2',
-      '    tnAchieves:      Infra, 14:35:8B:11:18:DC, Freq 2462 MHz, Rate 54 Mb/s, Strength 59 WPA WPA2',
-      '    *rscpublic01:    Infra, 0E:24:0A:08:91:8C, Freq 5180 MHz, Rate 54 Mb/s, Strength 69',
-      '    SoftwareTeam Airport: Infra, 80:EA:96:EE:00:4C, Freq 2412 MHz, Rate 54 Mb/s, Strength 100 WPA2',
-      '    rscpublic01:     Infra, 0E:06:0A:08:91:8C, Freq 2437 MHz, Rate 54 Mb/s, Strength 100',
-      '    PetNet:          Infra, 40:8B:07:F4:E8:8D, Freq 2462 MHz, Rate 54 Mb/s, Strength 87 WPA WPA2',
+      '    StevesDesk:      Infra, 53:7C:A0:87:41:DB, Freq 2437 MHz, Rate 54 Mb/s, Strength 100 WPA2',
+      '    myTestAP:      Infra, 66:7C:CF:7E:48:EF, Freq 2462 MHz, Rate 54 Mb/s, Strength 59 WPA WPA2',
+      '    *test01:    Infra, 97:70:69:86:A7:9F, Freq 5180 MHz, Rate 54 Mb/s, Strength 69',
+      '    DevTeam: Infra, 2D:A6:02:B0:BF:82, Freq 2412 MHz, Rate 54 Mb/s, Strength 100 WPA2',
+      '    test01:     Infra, F9:BD:D1:5E:F8:66, Freq 2437 MHz, Rate 54 Mb/s, Strength 100',
+      '    TestNet:          Infra, 42:62:87:4E:F8:2C, Freq 2462 MHz, Rate 54 Mb/s, Strength 87 WPA WPA2',
       '',
       '  IPv4 Settings:',
-      '    Address:         192.168.181.73',
+      '    Address:         192.168.165.84',
       '    Prefix:          24 (255.255.255.0)',
-      '    Gateway:         192.168.181.1',
+      '    Gateway:         192.168.191.1',
       '',
-      '    DNS:             208.67.222.222',
-      '    DNS:             208.67.220.220',
+      '    DNS:             207.68.222.222',
+      '    DNS:             207.68.220.220',
       '',
       '',
       '- Device: eth0 -----------------------------------------------------------------',
@@ -51,7 +51,7 @@ describe('nmt_parser', function() {
       '  Driver:            e1000e',
       '  State:             unavailable',
       '  Default:           no',
-      '  HW Address:        74:86:7A:6E:8B:34',
+      '  HW Address:        30:EC:7A:7D:44:81',
       '',
       '  Capabilities:',
       '    Carrier Detect:  yes',
@@ -86,7 +86,7 @@ describe('nmt_parser', function() {
     });
 
     it('should display the correct MAC address', function *() {
-      assert.equal(info[0].hw_address, '3C:A9:F4:08:91:8C');
+      assert.equal(info[0].hw_address, '91:5B:CE:AF:F9:E6');
     });
 
     it('should display the device supports WEP encryption', function *() {
@@ -102,7 +102,7 @@ describe('nmt_parser', function() {
     });
 
     it('should display the correct connected access point (without the asterisk)', function *() {
-      assert.equal(info[0].connected_ap, 'rscpublic01');
+      assert.equal(info[0].connected_ap, 'test01');
     });
   });
 });
