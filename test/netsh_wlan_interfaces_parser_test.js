@@ -1,12 +1,12 @@
 var assert        = require('assert')
   , co_mocha      = require('co-mocha')
-  , nsh_wli_parse = require(__dirname+'/../lib/netsh_wlan_interfaces_parser')
+  , nsh_wi_parse = require(__dirname+'/../lib/netsh_wlan_interfaces_parser')
   ;
 
 describe('netsh_wlan_interface_parser', function() {
   var info;
 
-  before(function *() {  
+  beforeEach(function *() {  
     // Sample output from "netsh wlan show interfaces"
     var test_output = [
         ''
@@ -34,7 +34,7 @@ describe('netsh_wlan_interface_parser', function() {
       , ''
     ].join('\n'); 
 
-    info = nsh_wli_parse(test_output);
+    info = nsh_wi_parse(test_output);
   });
 
   it('should display correct interface name', function *() {
