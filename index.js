@@ -22,7 +22,11 @@ exports.get_info = function*(cb) {
     var nsh_ip_out = yield spawn('netsh', ['interface', 'ip', 'show', 'address']);
     var nsh_wi_out = yield spawn('netsh', ['wlan', 'show', 'interfaces']);
     var nsh_wn_out = yield spawn('netsh', ['wlan', 'show', 'networks', 'mode=bssid']);
-    return {ip_show_address: nsh_ip_parse(nsh_ip_out), wlan_show_interfaces: nsh_wi_parse(nsh_wi_out), wlans_show_networks: nsh_wn_parse(nsh_wn_out)};
+    return {
+        ip_show_address: nsh_ip_parse(nsh_ip_out)
+      , wlan_show_interfaces: nsh_wi_parse(nsh_wi_out)
+      , wlans_show_networks: nsh_wn_parse(nsh_wn_out)
+    };
   }
   else {
     throw "Unsupported platform: " + os.platform();

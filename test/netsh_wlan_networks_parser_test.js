@@ -144,6 +144,10 @@ describe('netsh_wlan_networks_parser', function() {
       assert.strictEqual(info[2].bssids[0].channel, '6');
     });
 
+    it('should have the correct frequency for the given channel', function *() {
+      assert.deepEqual(info[2].bssids[0].frequency, ["2437000000", ""]);
+    });
+
     it('should have a BSSID with the correct basic rates', function *() {
       assert.strictEqual(info[2].bssids[0].basic_rates, '11');
     });
