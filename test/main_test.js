@@ -11,16 +11,16 @@ describe('node-wifi-tools', function() {
     it('should have an info object with subproperties depending on OS', function*() {
       info = yield nw_tools.get_info();
 
-      assert.equal(typeof info, 'object');
+      assert.strictEqual(typeof info, 'object');
       if (os.platform() === 'linux') {
-        assert.equal(info.hasOwnProperty('network_tool'), true);
+        assert.strictEqual(info.hasOwnProperty('network_tool'), true);
       }
       else if (os.platform() === 'darwin') {
-        assert.equal(info.hasOwnProperty('airport'), true);
-        assert.equal(info.hasOwnProperty('netstat'), true);
+        assert.strictEqual(info.hasOwnProperty('airport'), true);
+        assert.strictEqual(info.hasOwnProperty('netstat'), true);
       }
       else {
-        assert.equal(info, null);
+        assert.strictEqual(info, null);
       }
     })
   });

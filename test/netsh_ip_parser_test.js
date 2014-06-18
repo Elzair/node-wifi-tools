@@ -50,31 +50,31 @@ describe('netsh_ip_parser', function() {
 
   describe('Wireless Network Connection', function () {
     it('should contain correct information on Wireless connection', function *() {
-      assert.equal(info.hasOwnProperty('wireless_network_connection'), true);
+      assert.strictEqual(info.hasOwnProperty('wireless_network_connection'), true);
     });
 
     it('should contain indicator that DHCP is enabled on the interface', function *() {
-      assert.equal(info.wireless_network_connection.dhcp_enabled, 'Yes');
+      assert.strictEqual(info.wireless_network_connection.dhcp_enabled, 'Yes');
     });
 
     it('should contain correct IP address', function *() {
-      assert.equal(info.wireless_network_connection.ip_address, '192.168.131.186');
+      assert.strictEqual(info.wireless_network_connection.ip_address, '192.168.131.186');
     });
 
     it('should contain correct subnet prefix', function *() {
-      assert.equal(info.wireless_network_connection.subnet_prefix, '192.168.131.0/24 (mask 255.255.255.0)');
+      assert.strictEqual(info.wireless_network_connection.subnet_prefix, '192.168.131.0/24 (mask 255.255.255.0)');
     });
 
     it('should contain correct default gateway', function *() {
-      assert.equal(info.wireless_network_connection.default_gateway, '192.168.131.1');
+      assert.strictEqual(info.wireless_network_connection.default_gateway, '192.168.131.1');
     });
 
     it('should contain correct gateway metric', function *() {
-      assert.equal(info.wireless_network_connection.gateway_metric, '0');
+      assert.strictEqual(info.wireless_network_connection.gateway_metric, '0');
     });
 
     it('should contain correct interface metric', function *() {
-      assert.equal(info.wireless_network_connection.interfacemetric, '20');
+      assert.strictEqual(info.wireless_network_connection.interfacemetric, '20');
     });
   });
 });
