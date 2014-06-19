@@ -118,7 +118,7 @@ describe('nmt_parser', function() {
     });
 
     it('should display the frequency of the connected network', function *() {
-      assert.strictEqual(info[0].wireless_access_points.test01.frequency, '5180 MHz');
+      assert.strictEqual(info[0].wireless_access_points.test01.frequency, '5180000000');
     });
 
     it('should display the rate of the connected network', function *() {
