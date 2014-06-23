@@ -1,10 +1,11 @@
 #!/usr/local/bin/node --harmony
 
-var co = require('co')
+var co       = require('co')
   , nw_tools = require(__dirname + '/../')
+  , os       = require('os')
   ;
 
 co(function *() {
-  var info = yield nw_tools.get_info();
+  var info = yield nw_tools.get_info(os.platform());
   console.log(JSON.stringify(info, null, 2));
 })();
