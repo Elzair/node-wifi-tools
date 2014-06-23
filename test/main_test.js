@@ -11,7 +11,7 @@ describe('node-wifi-tools', function() {
     it('should have an info object if the system is linux and should throw an error otherwise', function *() {
       if (os.platform() === 'linux') {
         info = yield nw_tools.get_info_linux();
-        assert.strictEqual(info.hasOwnProperty('network_tool'), true);
+        assert.ok(info.hasOwnProperty('network_tool'));
       }
       else {
         try {
@@ -30,8 +30,8 @@ describe('node-wifi-tools', function() {
     it('should have an info object if the system is darwin and should throw an error otherwise', function *() {
       if (os.platform() === 'darwin') {
         info = yield nw_tools.get_info_darwin();
-        assert.strictEqual(info.hasOwnProperty('airport'), true);
-        assert.strictEqual(info.hasOwnProperty('netstat'), true);
+        assert.ok(info.hasOwnProperty('airport'));
+        assert.ok(info.hasOwnProperty('netstat'));
       }
       else {
         try {
@@ -50,9 +50,9 @@ describe('node-wifi-tools', function() {
     it('should have an info object if the system is windows and should throw an error otherwise', function *() {
       if (os.platform() === 'windows') {
         info = yield nw_tools.get_info_windows();
-        assert.strictEqual(info.hasOwnProperty('ip_show_address'), true);
-        assert.strictEqual(info.hasOwnProperty('wlan_show_interfaces'), true);
-        assert.strictEqual(info.hasOwnProperty('wlans_show_networks'), true);
+        assert.ok(info.hasOwnProperty('ip_show_address'));
+        assert.ok(info.hasOwnProperty('wlan_show_interfaces'));
+        assert.ok(info.hasOwnProperty('wlans_show_networks'));
       }
       else {
         try {
@@ -74,16 +74,14 @@ describe('node-wifi-tools', function() {
       assert.strictEqual(typeof info, 'object');
       switch(os.platform()) {
         case 'linux':
-          assert.strictEqual(info.hasOwnProperty('network_tool'), true);
+          assert.ok(info.hasOwnProperty('network_tool'));
           break;
         case 'darwin':
-          assert.strictEqual(info.hasOwnProperty('airport'), true);
-          assert.strictEqual(info.hasOwnProperty('netstat'), true);
+          assert.ok(info.hasOwnProperty('airport'));
+          assert.ok(info.hasOwnProperty('netstat'));
           break;
         case 'windows':
-          assert.strictEqual(info.hasOwnProperty('ip_show_address'), true);
-          assert.strictEqual(info.hasOwnProperty('wlan_show_interfaces'), true);
-          assert.strictEqual(info.hasOwnProperty('wlans_show_networks'), true);
+          assert.ok(info.hasOwnProperty('interfaces'));
           break;
         default:
           assert.strictEqual(info, null);
@@ -93,7 +91,7 @@ describe('node-wifi-tools', function() {
     it('should have an info object with linux properties or throw an error', function*() {
       if (os.platform() === 'linux') {
         info = yield nw_tools.get_info('linux');
-        assert.strictEqual(info.hasOwnProperty('network_tool'), true);
+        assert.ok(info.hasOwnProperty('network_tool'));
       }
       else {
         try {
@@ -108,7 +106,7 @@ describe('node-wifi-tools', function() {
     it('should have an info object with darwin properties or throw an error', function*() {
       if (os.platform() === 'darwin') {
         info = yield nw_tools.get_info('darwin');
-        assert.strictEqual(info.hasOwnProperty('network_tool'), true);
+        assert.ok(info.hasOwnProperty('network_tool'));
       }
       else {
         try {
@@ -123,7 +121,7 @@ describe('node-wifi-tools', function() {
     it('should have an info object with windows properties or throw an error', function*() {
       if (os.platform() === 'windows') {
         info = yield nw_tools.get_info('windows');
-        assert.strictEqual(info.hasOwnProperty('network_tool'), true);
+        assert.ok(info.hasOwnProperty('network_tool'));
       }
       else {
         try {

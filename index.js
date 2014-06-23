@@ -35,10 +35,17 @@ var get_info_windows = exports.get_info_windows = function *() {
   var nsh_wi_out = nsh_ip_parse(yield spawn('netsh', ['wlan', 'show', 'interfaces']));
   var nsh_ip_out = nsh_wi_parse(yield spawn('netsh', ['interface', 'ip', 'show', 'address']));
   var nsh_wn_out = nsh_wn_parse(yield spawn('netsh', ['wlan', 'show', 'networks', 'mode=bssid']));
+
+  // Format output
+  for (var iface in nsh_wi_out) {
+    if (nsh_wi_out.hasOwnProperty(iface) && nsh_ip_out.hasOwnProperty(iface)) {
+      nsh_wi_out[iface].ip_info = nsh_ip_out[iface];
+    }
+  }
+
   var out = {
-      ip_show_address: nsh_ip_out
-    , wlan_show_interfaces: nsh_wi_out
-    , wlan_show_networks: nsh_wn_out
+      interfaces: nsh_wi_out
+    , networks: nsh_wn_out
   };
 };
 

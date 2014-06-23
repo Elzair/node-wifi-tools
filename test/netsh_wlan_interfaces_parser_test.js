@@ -37,71 +37,75 @@ describe('netsh_wlan_interface_parser', function() {
     info = nsh_wi_parse(test_output);
   });
 
+  it('should contain the correct interface', function *() {
+    assert.ok(info.hasOwnProperty('wireless_network_connection'));
+  });
+
   it('should display correct interface name', function *() {
-    assert.strictEqual(info[0].name, 'Wireless Network Connection');
+    assert.strictEqual(info.wireless_network_connection.name, 'Wireless Network Connection');
   });
 
   it('should display correct interface description', function *() {
-    assert.strictEqual(info[0].description, 'Intel(R) Centrino(R) Ultimate-N 6300 AGN');
+    assert.strictEqual(info.wireless_network_connection.description, 'Intel(R) Centrino(R) Ultimate-N 6300 AGN');
   });
 
   it('should display correct interface GUID', function *() {
-    assert.strictEqual(info[0].guid, 'c120524d-ecfd-40f5-91cf-70b301342d42');
+    assert.strictEqual(info.wireless_network_connection.guid, 'c120524d-ecfd-40f5-91cf-70b301342d42');
   });
 
   it('should display correct physical address', function *() {
-    assert.strictEqual(info[0].physical_address, '91:5b:ce:af:f9:e6');
+    assert.strictEqual(info.wireless_network_connection.physical_address, '91:5b:ce:af:f9:e6');
   });
 
   it('should display correct interface state', function *() {
-    assert.strictEqual(info[0].state, 'connected');
+    assert.strictEqual(info.wireless_network_connection.state, 'connected');
   });
 
   it('should display correct SSID', function *() {
-    assert.strictEqual(info[0].ssid, 'test01');
+    assert.strictEqual(info.wireless_network_connection.ssid, 'test01');
   });
 
   it('should display correct BSSID', function *() {
-    assert.strictEqual(info[0].bssid, 'f9:bd:d1:5e:f8:66');
+    assert.strictEqual(info.wireless_network_connection.bssid, 'f9:bd:d1:5e:f8:66');
   });
 
   it('should display correct network type', function *() {
-    assert.strictEqual(info[0].network_type, 'Infrastructure');
+    assert.strictEqual(info.wireless_network_connection.network_type, 'Infrastructure');
   });
 
   it('should display correct radio type', function *() {
-    assert.strictEqual(info[0].radio_type, '802.11n');
+    assert.strictEqual(info.wireless_network_connection.radio_type, '802.11n');
   });
 
   it('should display correct authentication', function *() {
-    assert.strictEqual(info[0].authentication, 'WPA2-Enterprise');
+    assert.strictEqual(info.wireless_network_connection.authentication, 'WPA2-Enterprise');
   });
 
   it('should display correct cipher', function *() {
-    assert.strictEqual(info[0].cipher, 'CCMP');
+    assert.strictEqual(info.wireless_network_connection.cipher, 'CCMP');
   });
 
   it('should display correct channel', function *() {
-    assert.strictEqual(info[0].channel, '36');
+    assert.strictEqual(info.wireless_network_connection.channel, '36');
   });
 
   it('should display correct receive rate', function *() {
-    assert.strictEqual(info[0].receive_rate, '300');
+    assert.strictEqual(info.wireless_network_connection.receive_rate, '300');
   });
 
   it('should display correct transmit rate', function *() {
-    assert.strictEqual(info[0].transmit_rate, '300');
+    assert.strictEqual(info.wireless_network_connection.transmit_rate, '300');
   });
 
   it('should display correct signal', function *() {
-    assert.strictEqual(info[0].signal, '99%');
+    assert.strictEqual(info.wireless_network_connection.signal, '99%');
   });
 
   it('should display correct profile', function *() {
-    assert.strictEqual(info[0].profile, 'test01');
+    assert.strictEqual(info.wireless_network_connection.profile, 'test01');
   });
 
   it('should display correct hosted network status', function *() {
-    assert.strictEqual(info[0].hosted_network_status, 'Not started');
+    assert.strictEqual(info.wireless_network_connection.hosted_network_status, 'Not started');
   });
 });

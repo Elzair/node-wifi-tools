@@ -50,7 +50,7 @@ describe('netsh_ip_parser', function() {
 
   describe('Wireless Network Connection', function () {
     it('should contain correct information on Wireless connection', function *() {
-      assert.strictEqual(info.hasOwnProperty('wireless_network_connection'), true);
+      assert.ok(info.hasOwnProperty('wireless_network_connection'));
     });
 
     it('should contain the correct name for the connection', function *() {
