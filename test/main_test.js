@@ -11,7 +11,8 @@ describe('node-wifi-tools', function() {
     it('should have an info object if the system is linux and should throw an error otherwise', function *() {
       if (os.platform() === 'linux') {
         info = yield nw_tools.get_info_linux();
-        assert.ok(info.hasOwnProperty('network_tool'));
+        assert.ok(info.hasOwnProperty('devices'));
+        assert.ok(info.hasOwnProperty('connected_devices'));
       }
       else {
         try {
@@ -32,6 +33,7 @@ describe('node-wifi-tools', function() {
         info = yield nw_tools.get_info_darwin();
         assert.ok(info.hasOwnProperty('airport'));
         assert.ok(info.hasOwnProperty('netstat'));
+        assert.ok(info.hasOwnProperty('networksetup'));
       }
       else {
         try {
@@ -73,11 +75,13 @@ describe('node-wifi-tools', function() {
       assert.strictEqual(typeof info, 'object');
       switch(os.platform()) {
         case 'linux':
-          assert.ok(info.hasOwnProperty('network_tool'));
+          assert.ok(info.hasOwnProperty('devices'));
+          assert.ok(info.hasOwnProperty('connected_devices'));
           break;
         case 'darwin':
           assert.ok(info.hasOwnProperty('airport'));
           assert.ok(info.hasOwnProperty('netstat'));
+          assert.ok(info.hasOwnProperty('networksetup'));
           break;
         case 'windows':
           assert.ok(info.hasOwnProperty('interfaces'));
@@ -91,7 +95,8 @@ describe('node-wifi-tools', function() {
     it('should have an info object with linux properties or throw an error', function*() {
       if (os.platform() === 'linux') {
         info = yield nw_tools.get_info('linux');
-        assert.ok(info.hasOwnProperty('network_tool'));
+        assert.ok(info.hasOwnProperty('devices'));
+        assert.ok(info.hasOwnProperty('connected_devices'));
       }
       else {
         try {
@@ -106,7 +111,9 @@ describe('node-wifi-tools', function() {
     it('should have an info object with darwin properties or throw an error', function*() {
       if (os.platform() === 'darwin') {
         info = yield nw_tools.get_info('darwin');
-        assert.ok(info.hasOwnProperty('network_tool'));
+        assert.ok(info.hasOwnProperty('airport'));
+        assert.ok(info.hasOwnProperty('netstat'));
+        assert.ok(info.hasOwnProperty('networksetup'));
       }
       else {
         try {

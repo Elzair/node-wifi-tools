@@ -1,6 +1,6 @@
 var assert       = require('assert')
   , co_mocha     = require('co-mocha')
-  , nsh_ip_parse = require(__dirname+'/../lib/netsh_ip_parser')
+  , nsh_ia_parse = require(__dirname+'/../lib/netsh_interface_ip_show_address_parser')
   ;
 
 describe('netsh_ip_parser', function() {
@@ -45,7 +45,7 @@ describe('netsh_ip_parser', function() {
      , '    InterfaceMetric:                      50'
      , ''
     ].join('\n');
-    info = nsh_ip_parse(test_output);
+    info = nsh_ia_parse(test_output);
   });
 
   describe('Wireless Network Connection', function () {
