@@ -50,9 +50,8 @@ describe('node-wifi-tools', function() {
     it('should have an info object if the system is windows and should throw an error otherwise', function *() {
       if (os.platform() === 'windows') {
         info = yield nw_tools.get_info_windows();
-        assert.ok(info.hasOwnProperty('ip_show_address'));
-        assert.ok(info.hasOwnProperty('wlan_show_interfaces'));
-        assert.ok(info.hasOwnProperty('wlans_show_networks'));
+        assert.ok(info.hasOwnProperty('interfaces'));
+        assert.ok(info.hasOwnProperty('networks'));
       }
       else {
         try {
@@ -82,6 +81,7 @@ describe('node-wifi-tools', function() {
           break;
         case 'windows':
           assert.ok(info.hasOwnProperty('interfaces'));
+          assert.ok(info.hasOwnProperty('networks'));
           break;
         default:
           assert.strictEqual(info, null);
@@ -121,7 +121,8 @@ describe('node-wifi-tools', function() {
     it('should have an info object with windows properties or throw an error', function*() {
       if (os.platform() === 'windows') {
         info = yield nw_tools.get_info('windows');
-        assert.ok(info.hasOwnProperty('network_tool'));
+        assert.ok(info.hasOwnProperty('interfaces'));
+        assert.ok(info.hasOwnProperty('networks'));
       }
       else {
         try {
