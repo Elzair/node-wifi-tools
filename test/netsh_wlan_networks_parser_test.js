@@ -101,59 +101,51 @@ describe('netsh_wlan_networks_parser', function() {
     info = nsh_wn_parse(test_output);
   });
 
-  describe('Overview', function() {
-    it('should contain 6 entries', function *() {
-      assert.strictEqual(info.length, 6);
-    });
-  });
-
   describe('SSID 5 : test01', function() {
     it('should have a network with SSID "test01"', function *() {
-      assert.strictEqual(info[2].ssid, 'test01');
+      assert.ok(info.hasOwnProperty('test01'));
+      assert.strictEqual(info.test01.ssid, 'test01');
     });
 
     it('should have the correct network type', function *() {
-      assert.strictEqual(info[2].network_type, 'Infrastructure');
+      assert.strictEqual(info.test01.network_type, 'Infrastructure');
     });
 
     it('should have the correct authentication', function *() {
-      assert.strictEqual(info[2].authentication, 'Open');
+      assert.strictEqual(info.test01.authentication, 'Open');
     });
 
     it('should have the correct encryption type', function *() {
-      assert.strictEqual(info[2].encryption, 'None');
+      assert.strictEqual(info.test01.encryption, 'None');
     });
 
-    it('should have the correct number of BSSIDs', function *() {
-      assert.strictEqual(info[2].bssids.length, 2);
+    it('should have an access point with the correct BSSID', function *() {
+      assert.ok(info.test01.access_points.hasOwnProperty('f9_bd_d1_5e_f8_66'));
+      assert.strictEqual(info.test01.access_points.f9_bd_d1_5e_f8_66.bssid, 'f9:bd:d1:5e:f8:66');
     });
 
-    it('should have a BSSID with the correct MAC address', function *() {
-      assert.strictEqual(info[2].bssids[0].hw_address, 'f9:bd:d1:5e:f8:66');
+    it('should have an access point with the correct signal strength', function *() {
+      assert.strictEqual(info.test01.access_points.f9_bd_d1_5e_f8_66.signal, '99%');
     });
 
-    it('should have a BSSID with the correct signal strength', function *() {
-      assert.strictEqual(info[2].bssids[0].signal, '99%');
+    it('should have an access point with the correct radio type', function *() {
+      assert.strictEqual(info.test01.access_points.f9_bd_d1_5e_f8_66.radio_type, '802.11n');
     });
 
-    it('should have a BSSID with the correct radio type', function *() {
-      assert.strictEqual(info[2].bssids[0].radio_type, '802.11n');
-    });
-
-    it('should have a BSSID with the correct channel', function *() {
-      assert.strictEqual(info[2].bssids[0].channel, '6');
+    it('should have an access point with the correct channel', function *() {
+      assert.strictEqual(info.test01.access_points.f9_bd_d1_5e_f8_66.channel, '6');
     });
 
     it('should have the correct frequency for the given channel', function *() {
-      assert.deepEqual(info[2].bssids[0].frequency, ["2437000000", ""]);
+      assert.deepEqual(info.test01.access_points.f9_bd_d1_5e_f8_66.frequency, ["2437000000", ""]);
     });
 
-    it('should have a BSSID with the correct basic rates', function *() {
-      assert.strictEqual(info[2].bssids[0].basic_rates, '11');
+    it('should have an access point with the correct basic rates', function *() {
+      assert.strictEqual(info.test01.access_points.f9_bd_d1_5e_f8_66.basic_rates, '11');
     });
 
-    it('should have a BSSID with the correct other rates', function *() {
-      assert.strictEqual(info[2].bssids[0].other_rates, '1 2 5.5 6 9 12 18 24 36 48 54');
+    it('should have an access point with the correct other rates', function *() {
+      assert.strictEqual(info.test01.access_points.f9_bd_d1_5e_f8_66.other_rates, '1 2 5.5 6 9 12 18 24 36 48 54');
     });
   })
 });

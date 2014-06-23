@@ -53,6 +53,10 @@ describe('netsh_ip_parser', function() {
       assert.strictEqual(info.hasOwnProperty('wireless_network_connection'), true);
     });
 
+    it('should contain the correct name for the connection', function *() {
+      assert.strictEqual(info.wireless_network_connection.name, 'Wireless Network Connection');
+    });
+
     it('should contain indicator that DHCP is enabled on the interface', function *() {
       assert.strictEqual(info.wireless_network_connection.dhcp_enabled, 'Yes');
     });

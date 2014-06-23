@@ -13,8 +13,8 @@ var get_info_linux = exports.get_info_linux = function *() {
     throw "Platform is not linux";
   }
 
-  var nt_out = yield spawn('nm-tool');
-  return {network_tool: nmt_parse(nt_out)};
+  var nt_out = nmt_parse(yield spawn('nm-tool'));
+  return {network_tool: nt_out};
 };
 
 var get_info_darwin = exports.get_info_darwin = function *() {
@@ -22,9 +22,9 @@ var get_info_darwin = exports.get_info_darwin = function *() {
     throw "Platform is not darwin";
   }
 
-  var ap_out = yield spawn('/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport', ['--getinfo']);
-  var nst_out = yield spawn('netstat', ['-rn']);
-  return {airport: ap_parse(ap_out), netstat: nst_parse(nst_out)};
+  var ap_out = ap_parse(yield spawn('/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport', ['--getinfo']));
+  var nst_out = nst_parse(yield spawn('netstat', ['-rn']));
+  return {airport: ap_out, netstat: nst_out};
 };
 
 var get_info_windows = exports.get_info_windows = function *() {
@@ -32,13 +32,13 @@ var get_info_windows = exports.get_info_windows = function *() {
     throw "Platform is not windows";
   }
 
-  var nsh_ip_out = yield spawn('netsh', ['interface', 'ip', 'show', 'address']);
-  var nsh_wi_out = yield spawn('netsh', ['wlan', 'show', 'interfaces']);
-  var nsh_wn_out = yield spawn('netsh', ['wlan', 'show', 'networks', 'mode=bssid']);
-  return {
-      ip_show_address: nsh_ip_parse(nsh_ip_out)
-    , wlan_show_interfaces: nsh_wi_parse(nsh_wi_out)
-    , wlans_show_networks: nsh_wn_parse(nsh_wn_out)
+  var nsh_wi_out = nsh_ip_parse(yield spawn('netsh', ['wlan', 'show', 'interfaces']));
+  var nsh_ip_out = nsh_wi_parse(yield spawn('netsh', ['interface', 'ip', 'show', 'address']));
+  var nsh_wn_out = nsh_wn_parse(yield spawn('netsh', ['wlan', 'show', 'networks', 'mode=bssid']));
+  var out = {
+      ip_show_address: nsh_ip_out
+    , wlan_show_interfaces: nsh_wi_out
+    , wlan_show_networks: nsh_wn_out
   };
 };
 
