@@ -1,30 +1,14 @@
 var assert   = require('assert')
   , co_mocha = require('co-mocha')
-  , ap_parse = require(__dirname+'/../lib/airport_parser')
+  , ap_parse = require(__dirname+'/../../lib/airport_parser')
+  , fs       = require('fs')
   ;
 
 describe('airport_parser', function() {
   var info;
 
   beforeEach(function *() {
-    var test_output = [
-      , '     agrCtlRSSI: -54'
-      , '     agrExtRSSI: 0'
-      , '    agrCtlNoise: -86'
-      , '    agrExtNoise: 0'
-      , '          state: running'
-      , '        op mode: station '
-      , '     lastTxRate: 150'
-      , '        maxRate: 300'
-      , 'lastAssocStatus: 0'
-      , '    802.11 auth: open'
-      , '      link auth: wpa2'
-      , '          BSSID: 6:24:a:88:cd:f'
-      , '           SSID: test01'
-      , '            MCS: 7'
-      , '        channel: 36,1'
-      , ''
-    ].join('\n');
+    var test_output = JSON.parse(fs.readFileSync(__dirname+'/../data/airport_parser_data.json', 'utf8')).info.join('\n');
 
     info = ap_parse(test_output);
   });

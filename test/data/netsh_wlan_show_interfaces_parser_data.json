@@ -1,0 +1,28 @@
+{
+  "info": [
+       ""
+      , "There is 1 device on the system: "
+      , ""
+      , "    Name                   : Wireless Network Connection"
+      , "    Description            : Intel(R) Centrino(R) Ultimate-N 6300 AGN"
+      , "    GUID                   : c120524d-ecfd-40f5-91cf-70b301342d42"
+      , "    Physical address       : 91:5b:ce:af:f9:e6"
+      , "    State                  : connected"
+      , "    SSID                   : test01"
+      , "    BSSID                  : f9:bd:d1:5e:f8:66"
+      , "    Network type           : Infrastructure"
+      , "    Radio type             : 802.11n"
+      , "    Authentication         : WPA2-Enterprise"
+      , "    Cipher                 : CCMP"
+      , "    Connection mode        : Profile"
+      , "    Channel                : 36"
+      , "    Receive rate (Mbps)    : 300"
+      , "    Transmit rate (Mbps)   : 300"
+      , "    Signal                 : 99%"
+      , "    Profile                : test01"
+      , ""
+      , "    Hosted network status  : Not started"
+      , ""
+
+  ]
+}

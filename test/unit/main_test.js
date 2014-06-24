@@ -1,6 +1,6 @@
 var assert   = require('assert')
   , co_mocha = require('co-mocha')
-  , nw_tools = require(__dirname + '/../')
+  , nw_tools = require(__dirname + '/../../')
   , os       = require('os')
   ;
 

@@ -1,22 +1,15 @@
 var assert       = require('assert')
   , co_mocha     = require('co-mocha')
-  , nsh_is_parse = require(__dirname+'/../lib/netsh_interface_ipv4_show_subinterfaces_parser')
+  , fs           = require('fs')
+  , nsh_is_parse = require(__dirname+'/../../lib/netsh_interface_ipv4_show_subinterfaces_parser')
   ;
 
 describe('netsh interface ipv4 show subinterfaces', function() {
   var info = null;
 
   beforeEach(function *() {
-    var test_output = [
-        ''
-      , '   MTU  MediaSenseState   Bytes In  Bytes Out  Interface'
-      , '------  ---------------  ---------  ---------  -------------'
-      , '4294967295                1          0      27509  Loopback Pseudo-Interface 1'
-      , '  1488                1   65177881   28030327  Wireless Network Connection'
-      , '  1500                5          0          0  Local Area Connection'
-      , '  1500                5          0          0  Local Area Connection 2'
-    ].join('\n');
-
+    var test_output = JSON.parse(fs.readFileSync(__dirname+'/../data/netsh_interface_ipv4_show_subinterfaces_parser_data.json', 'utf8')).info.join('\n');
+ 
     info = nsh_is_parse(test_output);
   });
 

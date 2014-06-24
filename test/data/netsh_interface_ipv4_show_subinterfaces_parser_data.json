@@ -1,0 +1,11 @@
+{
+  "info": [        
+        ""
+      , "   MTU  MediaSenseState   Bytes In  Bytes Out  Interface"
+      , "------  ---------------  ---------  ---------  -------------"
+      , "4294967295                1          0      27509  Loopback Pseudo-Interface 1"
+      , "  1488                1   65177881   28030327  Wireless Network Connection"
+      , "  1500                5          0          0  Local Area Connection"
+      , "  1500                5          0          0  Local Area Connection 2"
+  ]
+}

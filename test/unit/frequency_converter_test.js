@@ -1,6 +1,6 @@
 var assert   = require('assert')
   , co_mocha = require('co-mocha')
-  , fcon     = require(__dirname+'/../lib/frequency_converter')
+  , fcon     = require(__dirname+'/../../lib/frequency_converter')
   ;
 
 describe('frequency_converter', function() {
