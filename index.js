@@ -1,12 +1,11 @@
 var ap_parse     = require(__dirname + '/lib/airport_parser')
   , iasd_parse   = require(__dirname + '/lib/ip_addr_show_dev_parser')
-  , nksp_parse   = require(__dirname + '/lib/networksetup_parser')
-  , nmt_parse    = require(__dirname + '/lib/nmt_parser')
+  , nmt_parse    = require(__dirname + '/lib/nmtool_parser')
   , nsh_ia_parse = require(__dirname + '/lib/netsh_interface_ip_show_address_parser')
   , nsh_is_parse = require(__dirname + '/lib/netsh_interface_ipv4_show_subinterfaces_parser')
   , nsh_wi_parse = require(__dirname + '/lib/netsh_wlan_show_interfaces_parser')
   , nsh_wn_parse = require(__dirname + '/lib/netsh_wlan_show_networks_parser')
-  , nst_parse    = require(__dirname + '/lib/netstat_parser')
+  , rg_parse     = require(__dirname + '/lib/route_get_parser')
   , os           = require('os')
   , spawn        = require('co-child-process')
   ;
@@ -33,9 +32,8 @@ var get_info_darwin = exports.get_info_darwin = function *() {
   }
 
   var ap_out = ap_parse(yield spawn('/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport', ['--getinfo']));
-  var nst_out = nst_parse(yield spawn('netstat', ['-rn']));
-  var nksp_out = nksp_parse(yield spawn('networksetup', ['-getMTU']));
-  return {airport: ap_out, netstat: nst_out, networksetup: nksp_out};
+  var rg_out = rg_parse(yield spawn('route', ['get', '8.8.8.8']));
+  return {airport: ap_out, route: rg_out};
 };
 
 var get_info_windows = exports.get_info_windows = function *() {

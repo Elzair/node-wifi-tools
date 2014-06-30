@@ -32,8 +32,9 @@ describe('node-wifi-tools', function() {
       if (os.platform() === 'darwin') {
         info = yield nw_tools.get_info_darwin();
         assert.ok(info.hasOwnProperty('airport'));
-        assert.ok(info.hasOwnProperty('netstat'));
-        assert.ok(info.hasOwnProperty('networksetup'));
+        //assert.ok(info.hasOwnProperty('netstat'));
+        //assert.ok(info.hasOwnProperty('networksetup'));
+        assert.ok(info.hasOwnProperty('route'));
       }
       else {
         try {
@@ -80,8 +81,9 @@ describe('node-wifi-tools', function() {
           break;
         case 'darwin':
           assert.ok(info.hasOwnProperty('airport'));
-          assert.ok(info.hasOwnProperty('netstat'));
-          assert.ok(info.hasOwnProperty('networksetup'));
+          //assert.ok(info.hasOwnProperty('netstat'));
+          //assert.ok(info.hasOwnProperty('networksetup'));
+          assert.ok(info.hasOwnProperty('route'));
           break;
         case 'windows':
           assert.ok(info.hasOwnProperty('interfaces'));
@@ -112,8 +114,9 @@ describe('node-wifi-tools', function() {
       if (os.platform() === 'darwin') {
         info = yield nw_tools.get_info('darwin');
         assert.ok(info.hasOwnProperty('airport'));
-        assert.ok(info.hasOwnProperty('netstat'));
-        assert.ok(info.hasOwnProperty('networksetup'));
+        //assert.ok(info.hasOwnProperty('netstat'));
+        //assert.ok(info.hasOwnProperty('networksetup'));
+        assert.ok(info.hasOwnProperty('route'));
       }
       else {
         try {

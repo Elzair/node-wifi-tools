@@ -1,0 +1,12 @@
+{
+  "info": [
+      "   route to: google-public-dns-a.google.com"
+    , "destination: default"
+    , "       mask: default"
+    , "    gateway: 10.0.0.1"
+    , "  interface: en1"
+    , "      flags: <UP,GATEWAY,DONE,STATIC,PRCLONING>"
+    , " recvpipe  sendpipe  ssthresh  rtt,msec    rttvar  hopcount      mtu     expire"
+    , "       0         0         0         0         0         0      1500         0 "
+  ]
+}

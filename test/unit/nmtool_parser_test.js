@@ -1,15 +1,15 @@
 var assert    = require('assert')
   , co_mocha  = require('co-mocha')
   , fs        = require('fs')
-  , nmt_parse = require(__dirname+'/../../lib/nmt_parser')
+  , nmt_parse = require(__dirname+'/../../lib/nmtool_parser')
   ;
 
-describe('nmt_parser', function() {
+describe('nmtool_parser', function() {
   var info;
 
   beforeEach(function *() {
     // Sample output from nm-tool
-    var test_output = JSON.parse(fs.readFileSync(__dirname+'/../data/nmt_parser_data.json', 'utf8')).info.join('\n');
+    var test_output = JSON.parse(fs.readFileSync(__dirname+'/../data/nmtool_parser_data.json', 'utf8')).info.join('\n');
  
     info = nmt_parse(test_output);
   });
