@@ -1,13 +1,13 @@
 {
   "name": "node-wifi-tools",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Utility for Node.js to work with 802.11 interfaces",
   "main": "index.js",
   "scripts": {
     "pretest": "npm install",
-    "test": "./node_modules/mocha/bin/mocha --harmony test/unit/*.js",
+    "test": "node_modules/.bin/mocha --harmony test/unit/*.js",
     "prestart": "npm install",
-    "start": "./bin/node-wifi-tools"
+    "start": "bin/node-wifi-tools"
   },
   "repository": {
     "type": "git",

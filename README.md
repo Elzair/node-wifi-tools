@@ -45,4 +45,4 @@ You can run the included test suite with the following command.
 
 * **Mac OSX**
 * **Linux** (with [nm-tool](http://linux.die.net/man/1/nm-tool))
-* **Windows+**
+* **Windows**
