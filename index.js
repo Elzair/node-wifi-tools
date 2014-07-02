@@ -37,7 +37,7 @@ var get_info_darwin = exports.get_info_darwin = function *() {
 };
 
 var get_info_windows = exports.get_info_windows = function *() {
-  if (os.platform() !== 'windows') {
+  if (os.platform() !== 'win32') {
     throw "Platform is not windows";
   }
 
@@ -73,9 +73,15 @@ exports.get_info = function*(op_sys) {
     case 'osx':
       out = yield get_info_darwin();
       break;
-    case 'windows':
+    case 'win32':
       out = yield get_info_windows();
       break;
+    case '':
+    case null:
+    case undefined:
+      break;
+    default:
+      throw "Unsupported platform: " + op_sys;
   }
 
   if (out) {
@@ -89,7 +95,7 @@ exports.get_info = function*(op_sys) {
     case 'darwin':
       out = yield get_info_darwin();
       break;
-    case 'windows':
+    case 'win32':
       out = yield get_info_windows();
       break;
     default:
