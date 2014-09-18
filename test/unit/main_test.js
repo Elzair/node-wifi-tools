@@ -32,8 +32,6 @@ describe('node-wifi-tools', function() {
       if (os.platform() === 'darwin') {
         info = yield nw_tools.get_info_darwin();
         assert.ok(info.hasOwnProperty('airport'));
-        //assert.ok(info.hasOwnProperty('netstat'));
-        //assert.ok(info.hasOwnProperty('networksetup'));
         assert.ok(info.hasOwnProperty('route'));
       }
       else {
@@ -51,7 +49,7 @@ describe('node-wifi-tools', function() {
     var info;
 
     it('should have an info object if the system is windows and should throw an error otherwise', function *() {
-      if (os.platform() === 'windows') {
+      if (os.platform() === 'win32') {
         info = yield nw_tools.get_info_windows();
         assert.ok(info.hasOwnProperty('interfaces'));
         assert.ok(info.hasOwnProperty('networks'));
@@ -81,11 +79,9 @@ describe('node-wifi-tools', function() {
           break;
         case 'darwin':
           assert.ok(info.hasOwnProperty('airport'));
-          //assert.ok(info.hasOwnProperty('netstat'));
-          //assert.ok(info.hasOwnProperty('networksetup'));
           assert.ok(info.hasOwnProperty('route'));
           break;
-        case 'windows':
+        case 'win32':
           assert.ok(info.hasOwnProperty('interfaces'));
           assert.ok(info.hasOwnProperty('networks'));
           break;
@@ -114,8 +110,6 @@ describe('node-wifi-tools', function() {
       if (os.platform() === 'darwin') {
         info = yield nw_tools.get_info('darwin');
         assert.ok(info.hasOwnProperty('airport'));
-        //assert.ok(info.hasOwnProperty('netstat'));
-        //assert.ok(info.hasOwnProperty('networksetup'));
         assert.ok(info.hasOwnProperty('route'));
       }
       else {
@@ -129,18 +123,27 @@ describe('node-wifi-tools', function() {
     });
 
     it('should have an info object with windows properties or throw an error', function*() {
-      if (os.platform() === 'windows') {
-        info = yield nw_tools.get_info('windows');
+      if (os.platform() === 'win32') {
+        info = yield nw_tools.get_info('win32');
         assert.ok(info.hasOwnProperty('interfaces'));
         assert.ok(info.hasOwnProperty('networks'));
       }
       else {
         try {
-          info = yield nw_tools.get_info('windows');
+          info = yield nw_tools.get_info('win32');
         }
         catch (e) {
           assert.strictEqual(e, 'Platform is not windows');
         }
+      }
+    });
+
+    it('should throw an error for an unsupported platform', function *() {
+      try {
+        info = yield nw_tools.get_info('plan9');
+      }
+      catch (e) {
+        assert.strictEqual(e, 'Unsupported platform: plan9');
       }
     });
   });
