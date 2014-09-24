@@ -1,4 +1,4 @@
-var assert     = require('assert')
+var expect     = require('chai').expect
   , co_mocha   = require('co-mocha')
   , fs         = require('fs')
   , iasd_parse = require(__dirname + '/../../lib/ip_addr_show_dev_parser')
@@ -17,23 +17,24 @@ describe('ip addr show dev', function() {
     });
 
     it('should have the proper flags', function *() {
-      assert.deepEqual(info.flags, ['BROADCAST', 'MULTICAST', 'UP', 'LOWER_UP']);
+      expect(info).to.have.property('flags');
+      expect(info.flags).to.eql(['BROADCAST', 'MULTICAST', 'UP', 'LOWER_UP']);
     });
 
     it('should have the correct MTU', function *() {
-      assert.strictEqual(info.mtu, '1500');
+      expect(info).to.have.property('mtu', '1500');
     });
 
     it('should have the correct traffic control queueing discipline (i.e. qdisc)', function *() {
-      assert.strictEqual(info.qdisc, 'mq');
+      expect(info).to.have.property('qdisc', 'mq');
     });
 
     it('should have the correct state', function *() {
-      assert.strictEqual(info.state, 'UP');
+      expect(info).to.have.property('state', 'UP');
     });
 
     it('should have the correct Ethernet buffer transmit queue length (i.e. qlen)', function *() {
-      assert.strictEqual(info.qlen, '1000');
+      expect(info).to.have.property('qlen', '1000');
     });
   });
 });

@@ -12,5 +12,8 @@
       , "__dirname": false
       , "module" : false
       , "exports" : false
+      , "it": false
+      , "describe": false
+      , "beforeEach": false
     }
 }

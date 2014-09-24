@@ -1,7 +1,7 @@
-var assert     = require('assert')
+var expect     = require('chai').expect
   , co_mocha   = require('co-mocha')
   , fs         = require('fs')
-  , rg_parse = require(__dirname + '/../../lib/route_get_parser')
+  , rg_parse   = require(__dirname + '/../../lib/route_get_parser')
   , os         = require('os')
   ;
 
@@ -15,47 +15,51 @@ describe('route get parser', function() {
   });
 
   it('should contain the correct gateway', function *() {
-    assert.strictEqual(info.gateway, '10.0.0.1');
+    expect(info).to.have.property('gateway', '10.0.0.1');
   });
 
   it('should contain the correct interface', function *() {
-    assert.strictEqual(info.interface, 'en1');
+    expect(info).to.have.property('interface', 'en1');
   });
 
   it('should contain the correct flags', function *() {
-    assert.deepEqual(info.flags, ['UP', 'GATEWAY', 'DONE', 'STATIC', 'PRCLONING']);
+    expect(info).to.have.deep.property('flags[0]', 'UP');
+    expect(info).to.have.deep.property('flags[1]', 'GATEWAY');
+    expect(info).to.have.deep.property('flags[2]', 'DONE');
+    expect(info).to.have.deep.property('flags[3]', 'STATIC');
+    expect(info).to.have.deep.property('flags[4]', 'PRCLONING');
   });
   
   it('should contain the correct recvpipe', function *() {
-    assert.strictEqual(info.recvpipe, '0');
+    expect(info).to.have.property('recvpipe', '0');
   });
 
   it('should contain the correct sendpipe', function *() {
-    assert.strictEqual(info.sendpipe, '0');
+    expect(info).to.have.property('sendpipe', '0');
   });
 
   it('should contain the correct ssthresh', function *() {
-    assert.strictEqual(info.ssthresh, '0');
+    expect(info).to.have.property('ssthresh', '0');
   });
 
   it('should contain the correct rtt_msec', function *() {
-    assert.strictEqual(info.rtt_msec, '0');
+    expect(info).to.have.property('rtt_msec', '0');
   });
 
   it('should contain the correct rttvar', function *() {
-    assert.strictEqual(info.rttvar, '0');
+    expect(info).to.have.property('rttvar', '0');
   });
 
   it('should contain the correct hopcount', function *() {
-    assert.strictEqual(info.hopcount, '0');
+    expect(info).to.have.property('hopcount', '0');
   });
 
   it('should contain the correct mtu', function *() {
-    assert.strictEqual(info.mtu, '1500');
+    expect(info).to.have.property('mtu', '1500');
   });
 
   it('should contain the correct expire', function *() {
-    assert.strictEqual(info.expire, '0');
+    expect(info).to.have.property('expire', '0');
   });
 });
 
