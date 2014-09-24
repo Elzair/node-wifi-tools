@@ -1,6 +1,6 @@
 {
   "name": "node-wifi-tools",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "Utility for Node.js to work with 802.11 interfaces",
   "main": "index.js",
   "scripts": {
