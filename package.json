@@ -1,11 +1,11 @@
 {
   "name": "node-wifi-tools",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "Utility for Node.js to work with 802.11 interfaces",
   "main": "index.js",
   "scripts": {
     "pretest": "npm install",
-    "test": "./node_modules/mocha/bin/mocha --harmony --reporter spec test/unit/*.js",
+    "test": "node_modules/.bin/mocha --harmony --reporter spec test/unit/*.js",
     "prestart": "npm install",
     "start": "bin/node-wifi-tools"
   },
@@ -28,6 +28,7 @@
     "string": "^1.8.1"
   },
   "devDependencies": {
+    "chai": "^1.9.1",
     "co-mocha": "0.0.4",
     "mocha": "^1.20.1",
     "reporter": "~0.1.0"

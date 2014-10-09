@@ -1,4 +1,4 @@
-var assert   = require('assert')
+var expect   = require('chai').expect
   , co_mocha = require('co-mocha')
   , nw_tools = require(__dirname + '/../../')
   , os       = require('os')
@@ -11,15 +11,15 @@ describe('node-wifi-tools', function() {
     it('should have an info object if the system is linux and should throw an error otherwise', function *() {
       if (os.platform() === 'linux') {
         info = yield nw_tools.get_info_linux();
-        assert.ok(info.hasOwnProperty('devices'));
-        assert.ok(info.hasOwnProperty('connected_devices'));
+        expect(info).to.have.property('devices');
+        expect(info).to.have.property('connected_devices');
       }
       else {
         try {
           info = yield nw_tools.get_info_linux();
         }
         catch (e) {
-          assert.strictEqual(e, 'Platform is not linux');
+          expect(e).to.equal('Platform is not linux');
         }
       }
     });
@@ -31,15 +31,15 @@ describe('node-wifi-tools', function() {
     it('should have an info object if the system is darwin and should throw an error otherwise', function *() {
       if (os.platform() === 'darwin') {
         info = yield nw_tools.get_info_darwin();
-        assert.ok(info.hasOwnProperty('airport'));
-        assert.ok(info.hasOwnProperty('route'));
+        expect(info).to.have.property('airport');
+        expect(info).to.have.property('route');
       }
       else {
         try {
           info = yield nw_tools.get_info_darwin();
         }
         catch (e) {
-          assert.strictEqual(e, 'Platform is not darwin');
+          expect(e).to.equal('Platform is not darwin');
         }
       }
     });
@@ -51,15 +51,15 @@ describe('node-wifi-tools', function() {
     it('should have an info object if the system is windows and should throw an error otherwise', function *() {
       if (os.platform() === 'win32') {
         info = yield nw_tools.get_info_windows();
-        assert.ok(info.hasOwnProperty('interfaces'));
-        assert.ok(info.hasOwnProperty('networks'));
+        expect(info).to.have.property('interfaces');
+        expect(info).to.have.property('networks');
       }
       else {
         try {
           info = yield nw_tools.get_info_windows();
         }
         catch (e) {
-          assert.strictEqual(e, 'Platform is not windows');
+          expect(e).to.equal('Platform is not windows');
         }
       }
     });
@@ -71,37 +71,37 @@ describe('node-wifi-tools', function() {
     it('should have an info object with subproperties depending on OS', function*() {
       info = yield nw_tools.get_info();
 
-      assert.strictEqual(typeof info, 'object');
+      expect(info).to.be.an('object');
       switch(os.platform()) {
         case 'linux':
-          assert.ok(info.hasOwnProperty('devices'));
-          assert.ok(info.hasOwnProperty('connected_devices'));
+          expect(info).to.have.property('devices');
+          expect(info).to.have.property('connected_devices');
           break;
         case 'darwin':
-          assert.ok(info.hasOwnProperty('airport'));
-          assert.ok(info.hasOwnProperty('route'));
+          expect(info).to.have.property('airport');
+          expect(info).to.have.property('route');
           break;
         case 'win32':
-          assert.ok(info.hasOwnProperty('interfaces'));
-          assert.ok(info.hasOwnProperty('networks'));
+          expect(info).to.have.property('interfaces');
+          expect(info).to.have.property('networks');
           break;
         default:
-          assert.strictEqual(info, null);
+          expect(e).to.equal(null);
       }
     });
 
     it('should have an info object with linux properties or throw an error', function*() {
       if (os.platform() === 'linux') {
         info = yield nw_tools.get_info('linux');
-        assert.ok(info.hasOwnProperty('devices'));
-        assert.ok(info.hasOwnProperty('connected_devices'));
+        expect(info).to.have.property('devices');
+        expect(info).to.have.property('connected_devices');
       }
       else {
         try {
           info = yield nw_tools.get_info('linux');
         }
         catch (e) {
-          assert.strictEqual(e, 'Platform is not linux');
+          expect(e).to.equal('Platform is not linux');
         }
       }
     });
@@ -109,15 +109,15 @@ describe('node-wifi-tools', function() {
     it('should have an info object with darwin properties or throw an error', function*() {
       if (os.platform() === 'darwin') {
         info = yield nw_tools.get_info('darwin');
-        assert.ok(info.hasOwnProperty('airport'));
-        assert.ok(info.hasOwnProperty('route'));
+        expect(info).to.have.property('airport');
+        expect(info).to.have.property('route');
       }
       else {
         try {
           info = yield nw_tools.get_info('darwin');
         }
         catch (e) {
-          assert.strictEqual(e, 'Platform is not darwin');
+          expect(e).to.equal('Platform is not darwin');
         }
       }
     });
@@ -125,15 +125,15 @@ describe('node-wifi-tools', function() {
     it('should have an info object with windows properties or throw an error', function*() {
       if (os.platform() === 'win32') {
         info = yield nw_tools.get_info('win32');
-        assert.ok(info.hasOwnProperty('interfaces'));
-        assert.ok(info.hasOwnProperty('networks'));
+        expect(info).to.have.property('interfaces');
+        expect(info).to.have.property('networks');
       }
       else {
         try {
           info = yield nw_tools.get_info('win32');
         }
         catch (e) {
-          assert.strictEqual(e, 'Platform is not windows');
+          expect(e).to.equal('Platform is not windows');
         }
       }
     });
@@ -143,7 +143,7 @@ describe('node-wifi-tools', function() {
         info = yield nw_tools.get_info('plan9');
       }
       catch (e) {
-        assert.strictEqual(e, 'Unsupported platform: plan9');
+        expect(e).to.equal( 'Unsupported platform: plan9');
       }
     });
   });
